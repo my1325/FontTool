@@ -88,3 +88,7 @@ public struct FT_CustomFontTools<FT_Font> where FT_Font: FT_CustomFontCompatible
 }
 
 #endif
+
+public final class FT_BundleToken {
+    public static let ft_bundle = Bundle(for: FT_BundleToken.self)
+}

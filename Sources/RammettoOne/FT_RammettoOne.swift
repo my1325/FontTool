@@ -15,13 +15,23 @@ public enum FT_RammettoOneFonts: String {
     case ft_regular
 }
 
+extension FT_BundleToken {
+    public static var ft_rammettoOneBundle: Bundle {
+#if SWIFT_PACKAGE
+        return .module
+#else
+        return FT_BundleToken.ft_bundle
+#endif
+    }
+}
+
 extension FT_RammettoOneFonts: FT_CustomFontCompatible {
     public var ft_family: String {
         "Rammetto One"
     }
     
     public func ft_registerFont() {
-        guard let ft_fontURL = Bundle.module.url(forResource: ft_name, withExtension: "ttf") else {
+        guard let ft_fontURL = FT_BundleToken.ft_rammettoOneBundle.url(forResource: ft_name, withExtension: "ttf") else {
             fatalError("ft font \(ft_name) not found")
         }
         

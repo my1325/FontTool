@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 #if canImport(CustomFonts)
 import CustomFonts
 #endif
@@ -32,13 +31,23 @@ public enum FT_PoppinsFonts: String {
     case ft_thin_italic
 }
 
+extension FT_BundleToken {
+    public static var ft_poppinsBundle: Bundle {
+#if SWIFT_PACKAGE
+        return .module
+#else
+        return FT_BundleToken.ft_bundle
+#endif
+    }
+}
+
 extension FT_PoppinsFonts: FT_CustomFontCompatible {
     public var ft_family: String {
         "Poppins"
     }
     
     public func ft_registerFont() {
-        guard let ft_fontURL = Bundle.module.url(forResource: ft_name, withExtension: "otf") else {
+        guard let ft_fontURL = FT_BundleToken.ft_poppinsBundle.url(forResource: ft_name, withExtension: "otf") else {
             fatalError("ft font \(ft_name) not found")
         }
         

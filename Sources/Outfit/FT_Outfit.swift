@@ -43,6 +43,17 @@ public enum FT_OutfitFonts {
     case ft_thin(FT_ThinFonts)
 }
 
+
+extension FT_BundleToken {
+    public static var ft_outfitBundle: Bundle {
+#if SWIFT_PACKAGE
+        return .module
+#else
+        return FT_BundleToken.ft_bundle
+#endif
+    }
+}
+
 extension FT_OutfitFonts: FT_CustomFontCompatible {
     public var ft_name: String {
         switch self {
@@ -70,7 +81,7 @@ extension FT_OutfitFonts: FT_CustomFontCompatible {
     }
 
     public func ft_registerFont() {
-        guard let ft_fontURL = Bundle.module.url(forResource: ft_fontPath, withExtension: "") else {
+        guard let ft_fontURL = FT_BundleToken.ft_outfitBundle.url(forResource: ft_fontPath, withExtension: "") else {
             fatalError("ft font \(ft_name) not found")
         }
 
