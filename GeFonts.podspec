@@ -46,4 +46,10 @@ Pod::Spec.new do |s|
     ss.dependency 'GeFonts/CustomFonts'
     ss.resource = 'Sources/Outfit/Fonts/*.ttf'
  end
+ 
+  s.subspec 'Causten' do |ss|
+    ss.source_files = 'Sources/Causten/*.swift'
+    ss.dependency 'GeFonts/CustomFonts'
+    ss.resource = 'Sources/Causten/Fonts/*.otf'
+ end
 end

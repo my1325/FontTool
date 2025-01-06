@@ -15,6 +15,7 @@ let package = Package(
         .library(name: "RammettoOne", targets: ["RammettoOne"]),
         .library(name: "Outfit", targets: ["Outfit"]),
         .library(name: "KohinoorTelugu", targets: ["KohinoorTelugu"]),
+        .library(name: "Causten", targets: ["Causten"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -39,6 +40,13 @@ let package = Package(
         ),
         .target(
             name: "Outfit",
+            dependencies: ["CustomFonts"],
+            resources: [
+                .process("Fonts/"),
+            ]
+        ),
+        .target(
+            name: "Causten",
             dependencies: ["CustomFonts"],
             resources: [
                 .process("Fonts/"),
