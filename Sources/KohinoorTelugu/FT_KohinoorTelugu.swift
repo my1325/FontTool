@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 #if canImport(CustomFonts)
 import CustomFonts
 #endif
