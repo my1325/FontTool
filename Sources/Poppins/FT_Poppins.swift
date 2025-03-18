@@ -25,8 +25,8 @@ public enum FT_PoppinsFonts: String {
     case ft_medium
     case ft_medium_italic
     case ft_regular
-    case ft_semibold
-    case ft_semibold_italic
+    case ft_semi_bold
+    case ft_semi_bold_italic
     case ft_thin
     case ft_thin_italic
 }
