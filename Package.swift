@@ -2,7 +2,7 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
-  
+
 let package = Package(
     name: "FontTool",
     platforms: [.iOS(.v13)],
@@ -17,6 +17,7 @@ let package = Package(
         .library(name: "KohinoorTelugu", targets: ["KohinoorTelugu"]),
         .library(name: "Causten", targets: ["Causten"]),
         .library(name: "Lobster", targets: ["Lobster"]),
+        .library(name: "Montserrat", targets: ["Montserrat"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -60,6 +61,13 @@ let package = Package(
                 .process("Fonts/"),
             ]
         ),
-    ]
+        .target(
+            name: "Montserrat",
+            dependencies: ["CustomFonts"],
+            resources: [
+                .process("Fonts/"),
+            ]
+        ),
+    ],
+    swiftLanguageModes: [.v6]
 )
-
