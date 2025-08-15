@@ -28,7 +28,7 @@ import CustomFonts
 ///Users/mayong/Desktop/My/Fonts/Sources/Montserrat/Fonts/Montserrat-SemiBoldItalic.ttf
 ///Users/mayong/Desktop/My/Fonts/Sources/Montserrat/Fonts/Montserrat-Thin.ttf
 ///Users/mayong/Desktop/My/Fonts/Sources/Montserrat/Fonts/Montserrat-ThinItalic.ttf
-public enum FT_MontserratFonts {
+public enum FT_MontserratFonts: String {
     case ft_black
     case ft_black_italic
     case ft_bold
@@ -50,7 +50,7 @@ public enum FT_MontserratFonts {
 
 
 extension FT_BundleToken {
-    public static var ft_outfitBundle: Bundle {
+    public static var ft_montserratBundle: Bundle {
 #if SWIFT_PACKAGE
         return .module
 #else
@@ -60,12 +60,16 @@ extension FT_BundleToken {
 }
 
 extension FT_MontserratFonts: FT_CustomFontCompatible {
+//    public var ft_name: String {
+//        <#code#>
+//    }
+    
     public var ft_family: String {
         "Montserrat"
     }
 
     public func ft_registerFont() {
-        guard let ft_fontURL = FT_BundleToken.ft_outfitBundle.url(forResource: ft_name, withExtension: "ttf") else {
+        guard let ft_fontURL = FT_BundleToken.ft_montserratBundle.url(forResource: ft_name, withExtension: "ttf") else {
             fatalError("ft font \(ft_name) not found")
         }
 
